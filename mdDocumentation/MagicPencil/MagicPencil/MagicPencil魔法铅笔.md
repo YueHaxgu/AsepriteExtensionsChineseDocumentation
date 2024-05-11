@@ -17,18 +17,23 @@ Magic Pencil 是 Aseprite 的扩展，它为铅笔工具提供了额外的选项
   - 成比(Proportional)：混合颜色考虑到每种颜色的像素数，左键单击使用 RGB 颜色模型混合颜色，而右键单击使用 HSV。
 - 鲜艳化(Colorize) ：更改颜色（色调），适用于前景（左键单击）和背景（右键单击）颜色。
 - 去饱和(Desaturate) ：完全去除颜色（色调）。
-- 转变(Shift)： 根据所选属性更改颜色，左键单击添加，右键单击减去。您可以通过更改这些选项下的百分比滑块来更改将应用​​多少次。
+- 转变(Shift)*__Hue/Saturation/Value/Lightness__*： 根据所选属性更改颜色，左键单击添加，右键单击减去。您可以通过更改这些选项下的百分比滑块来更改将应用​​多少次。
 - 索引模式(Indexed Mode)：启用后，防止引入新颜色，并且任何修改颜色的选项都将使用调色板中的颜色。
 
 ### 已知问题
-这是正文这是正文这是正文这是正文这是正文这是正文这是正文这是正文这是正文这是正文这是正文这是正文这是正文这是正文这是正文。这是正文这是正文这是正文这是正文这是正文这是正文这是正文这是正文这是正文这是正文这是正文这是正文这是正文这是正文这是正文。这是正文这是正文这是正文这是正文这是正文这是正文这是正文这是正文这是正文这是正文这是正文这是正文这是正文这是正文这是正文。这是正文这是正文这是正文这是正文这是正文这是正文这是正文这是正文这是正文这是正文这是正文这是正文这是正文这是正文这是正文。
+>__在完全空的单元格上使用 Magic Pencil 中的任何选项将导致第一个笔划被视为普通铅笔 当使用除 Outline 或 Colorize 之外的 Magic Pencil 中的任何选项（实际上使用所选颜色）时，从调色板中选择颜色会干扰其工作并导致奇怪的行为__
 
 ### 插件预览
-![](https://markdown.com.cn/assets/img/philly-magic-garden.9c0b4415.jpg)
+![alt text](1.gif)
+![alt text](2.gif)
+![alt text](3.gif)
+![alt text](4.gif)
+![alt text](5.gif)
 
 ### 插件作者
-作者：[Kacper Woźniak](https://thkaspar.itch.io/)
-发布时间：[2022.06.04](https://thkaspar.itch.io/magic-pencil)
+>**作者**：[Kacper Woźniak](https://thkaspar.itch.io/)
+>**版本**：[1.0.5](https://thkaspar.itch.io/magic-pencil)
+>**版本发布时间**：2022.06.04
 
 ### 说明文档撰写人
 YueHaxgu月
