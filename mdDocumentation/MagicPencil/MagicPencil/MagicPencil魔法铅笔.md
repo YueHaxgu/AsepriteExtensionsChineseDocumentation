@@ -31,8 +31,8 @@ Magic Pencil 是 Aseprite 的扩展，它为铅笔工具提供了额外的选项
 ![alt text](5.gif)
 
 ### 插件作者
->**作者**：[Kacper Woźniak](https://thkaspar.itch.io/)
->**版本**：[1.0.5](https://thkaspar.itch.io/magic-pencil)
+>**作者**：[Kacper Woźniak](https://thkaspar.itch.io/)\
+>**版本**：[1.0.5](https://thkaspar.itch.io/magic-pencil)\
 >**版本发布时间**：2022.06.04
 
 ### 说明文档撰写人
