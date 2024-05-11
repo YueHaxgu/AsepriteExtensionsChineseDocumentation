@@ -32,3 +32,4 @@
 ### 说明文档撰写人
 - [YueHaxgu月](https://github.com/YueHaxgu)
 - 额外说明：若发现插件有新版本，欢迎留言督促更新汉化
+
