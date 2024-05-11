@@ -24,8 +24,9 @@
 ![示例](https://markdown.com.cn/assets/img/philly-magic-garden.9c0b4415.jpg)
 
 ### 插件作者
->**作者**：[示例作者](https://github.com/YueHaxgu)
->**版本**：[x.xx (如果有)](插件网站(如果有))
+注意这里为了方便生成html请在末尾添加\
+>**作者**：[示例作者](https://github.com/YueHaxgu)\
+>**版本**：[x.xx (如果有)](插件网站(如果有))\
 >**版本发布时间**：2022.06.04
 
 ### 说明文档撰写人
