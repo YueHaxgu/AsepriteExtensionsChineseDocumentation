@@ -37,3 +37,4 @@ Magic Pencil 是 Aseprite 的扩展，它为铅笔工具提供了额外的选项
 
 ### 说明文档撰写人
 YueHaxgu月
+六
