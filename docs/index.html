@@ -5,13 +5,7 @@
     <title>插件说明文档</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function(url){
-            // 在页面加载完成后执行加载操作
-            $('#inspection').load(url);
-        });
-    </script>
+
 </head>
 <body>
 
@@ -21,17 +15,14 @@
     </div>
 
     <div class="indexinspection">
-        <li class="indexitem">
-           
+         <button class="indexitem" onclick="loadExternalContent('https://raw.githubusercontent.com/YueHaxgu/AsepriteExtensionsChineseDocumentation/main/docs/MagicPencil.html')">
+            魔术铅笔
+        </button>
+        <button class="indexitem" onclick="loadExternalContent('https://raw.githubusercontent.com/YueHaxgu/AsepriteExtensionsChineseDocumentation/main/docs/RandomizeBrush.html')">
+            随机笔刷
+        </button>
 
-        </li>
-        <li class="indexitem">
-            <botton>124124</botton>
-        </li>
 
-        <li class="indexitem">
-            <botton>124124</botton>
-        </li>
     </div>
 
 
@@ -78,9 +69,10 @@
     }
 
     .indexitem {
+        width: 100%;
         margin-bottom: 10px;
         border-radius: 10px;
-        background-color: #a63a3a;
+        background-color: #2c2a27;
         padding: 10px;
         display: block;
         color: #0086b3;
@@ -102,19 +94,27 @@
 
         right: 0;
         top: 50px;
-        background-color: #8e4747;
+
 
     }
 
 
 </style>
-<script>
+
+
+    <script>
+
+
     function loadExternalContent(url) {
+
+
+
+        // 创建一个 XMLHttpRequest 对象
         var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
+        xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var response = xhr.responseText;
-                var inspection = document.querySelector('.inspection');
+                var inspection = document.querySelector('#inspection');
                 inspection.innerHTML = response;  // 将获取的 HTML 文件内容插入到 .inspection 元素中
             }
         };
@@ -122,4 +122,5 @@
         xhr.send();
     }
 </script>
+
 </html>
