@@ -1,14 +1,125 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
-    <meta charset="UTF-8">
+    <title>插件说明文档</title>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // 在页面加载完成后执行加载操作
+            $('#inspection').load('https://github.com/YueHaxgu/AsepriteExtensionsChineseDocumentation/blob/main/docs/MagicPencil.html');
+        });
+    </script>
 </head>
 <body>
-    这是一个托管测试
-    <a href="MagicPencil.html">跳转到另一个页面</a>
-    <h1>这是第二哥标题，为啥不能用a标签呢？</h1>
-    <a href="www.baidu.com">跳转到百度</a>
+
+<div class="index">
+    <div class="indextitle">
+
+    </div>
+"
+    <div class="indexinspection">
+        <li class="indexitem">
+            <button onclick="loadExternalContent('C:\\Users\\C66\\Desktop\\AsepritePluginChineseDocumentation\\docs\\RandomizeBrush.html')">124124</button>
+
+        </li>
+        <li class="indexitem">
+            <botton>124124</botton>
+        </li>
+
+        <li class="indexitem">
+            <botton>124124</botton>
+        </li>
+    </div>
+
+
+</div>
+
+<div id="inspection">
+
+
+</div>
+
+
 </body>
+<style>
+
+    html, body {
+        height: 100%;
+        width: 100%;
+    }
+
+    .index {
+
+
+        position: fixed;
+        /* 将目录栏设置为固定位置 */
+        top: 50px;
+        /* 在页面顶部距离 50px 的位置 */
+
+        width: 15%;
+        min-width: 150px;
+        /* 设置目录栏的宽度 */
+        overflow-y: auto;
+        /* 如果内容超出目录栏高度，添加滚动条 */
+        background-color: #5c5c5c;
+
+    }
+
+    .indextitle {
+
+        width: 100%;
+        height: 50px;
+        background-color: #0086b3;
+        color: #fff;
+        margin-bottom: 10px;
+    }
+
+    .indexitem {
+        margin-bottom: 10px;
+        border-radius: 10px;
+        background-color: #a63a3a;
+        padding: 10px;
+        display: block;
+        color: #0086b3;
+        transition: color 0.5s, background-color 0.5s;
+
+    }
+
+    .indexitem:hover {
+        color: #005682;
+        background-color: #55a532;
+    }
+
+    #inspection {
+        display: flex;
+        width: 80%;
+        max-width: calc(95% - 150px);;
+        position: fixed;
+        height: 100%;
+
+        right: 0;
+        top: 50px;
+        background-color: #8e4747;
+
+    }
+
+
+</style>
+<script>
+    function loadExternalContent(url) {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var response = xhr.responseText;
+                var inspection = document.querySelector('.inspection');
+                inspection.innerHTML = response;  // 将获取的 HTML 文件内容插入到 .inspection 元素中
+            }
+        };
+        xhr.open('GET', url, true);
+        xhr.send();
+    }
+</script>
 </html>
