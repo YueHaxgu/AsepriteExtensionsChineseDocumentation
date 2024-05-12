@@ -1,3 +1,4 @@
+![插件头图](https://img.itch.zone/aW1nLzkwODY4NTQucG5n/original/ssth9P.png)
 # MagicPencil插件说明文档
 *本文档最后一次修改时间：2024.05.12*
 
