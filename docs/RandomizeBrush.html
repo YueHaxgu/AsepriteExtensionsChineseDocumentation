@@ -2,7 +2,7 @@
 <html>
 
 <head>
-      <title>MagicPencil魔法铅笔</title>
+      <title>RandomizeBrush随机笔刷</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -858,86 +858,98 @@
 
       <div class="crossnote markdown-preview  ">
 
-            <p><img src="https://img.itch.zone/aW1nLzkwODY4NTQucG5n/original/ssth9P.png" alt="插件头图"></p>
-            <h1 id="magicpencil插件说明文档">MagicPencil插件说明文档 </h1>
+            <p><img src="https://img.itch.zone/aW1nLzEyNjMyNzE0LnBuZw==/original/SWQQFE.png" alt="插件头图"></p>
+            <h1 id="randomizebrush插件说明文档">RandomizeBrush插件说明文档 </h1>
             <p><em>本文档最后一次修改时间：2024.05.12</em></p>
             <h3 id="插件描述">插件描述 </h3>
-            <p>Magic Pencil 是 Aseprite 的扩展插件，它为Aseprite添加了更多功能</p>
+            <p>Randomize Brush 是 Aseprite 的扩展插件，它为Aseprite添加了更多功能</p>
             <h3 id="插件安装及使用">插件安装及使用 </h3>
             <p>安装：编辑-首选项-扩展-添加扩展-打开扩展所在文件夹-点击扩展本体<br>
-                  使用：到“编辑”菜单并单击“魔术铅笔”选项，从对话框窗口中选择一种效果并使用铅笔工具<br>
-                  注意：大多数选项使用魔术颜色，关闭魔术铅笔对话框窗口或选择常规选项后将恢复所选颜色</p>
+                  使用：到“编辑”菜单并单击“BrushProperties”选项，从对话框窗口中选择一种效果并使用</p>
             <h3 id="插件选项">插件选项 </h3>
             <ul>
-                  <li><strong>模式(Mode)</strong>
+                  <li><strong>尺寸(Mode)</strong>
                         <ul>
-                              <li><strong>常规模式(Regular)</strong>：默认绘画模式</li>
-                              <li><strong>涂鸦模式(Graffiti)</strong>：选中此选项后，笔刷刷出内容会有滴蜡的效果[(✿◡‿◡)]</li>
-                        </ul>
-                  </li>
-                  <li><strong>轮廓生成(Outline)</strong>
-                        <ul>
-                              <li><strong>封闭图形(Tool)</strong>：当你选了这个选项之后，画笔触及区域的闭合路径会自动生成一圈描边。【比如你画了一个icon，你在这个icon上点了一笔就会自动把这个icon描个边，描边颜色是你当前的选中颜色】
+                              <li><strong>静止</strong>：无效果。</li>
+                              <li><strong>生长(Grow)</strong>：每次点击笔刷都会以“value”为单位递增
+                                    <ul>
+                                          <li>数值(Value)：每次增加的笔刷大小数值</li>
+                                    </ul>
                               </li>
-                              <li><strong>跟随笔刷(Brush)</strong>：当你选择这个选项之后，你的笔刷会自动添加一层描边，且重叠部分会自动修改，描边颜色在下方更改</li>
-                        </ul>
-                  </li>
-                  <li><strong>变换</strong>
-                        <ul>
-                              <li><strong>选择区(Selection)</strong>：选中后出现紫色笔刷，左键笔刷刷到的区域即可添加选区，右键笔刷刷到的区域即可删除选区</li>
-                              <li><strong>上移(Lift)</strong>：选中后出现紫色笔刷，用紫色笔刷左键覆盖当前画布的内容即可自动复制覆盖内容到上一个新图层，右键则向下生成</li>
-                        </ul>
-                  </li>
-                  <li><strong>混合方式(Mix)</strong>
-                        <ul>
-                              <li><strong>唯一混合(Unique)</strong>：混合颜色，左键单击使用 RGB 颜色模型混合颜色，而右键单击使用 HSV</li>
-                              <li><strong>成比混合(Proportional)</strong>：混合颜色考虑到每种颜色的像素数，左键单击使用 RGB 颜色模型混合颜色，而右键单击使用 HSV
+                              <li><strong>衰减(Shrink)</strong>：每次点击笔刷都会以“value”为单位递减
+                                    <ul>
+                                          <li>数值(Value)：每次减少的笔刷大小数值</li>
+                                    </ul>
+                              </li>
+                              <li><strong>随机范围(Random [Range])</strong>：根据最小值与最大值进行随机
+                                    <ul>
+                                          <li>最小值/最大值(Min/Max)：最小值与最大值</li>
+                                    </ul>
+                              </li>
+                              <li><strong>随机自定义范围(Random [Set])</strong>：根据自定义的数值进行随机
+                                    <ul>
+                                          <li>数值(Value)：格式(1,2,3)，可以无限添加</li>
+                                    </ul>
                               </li>
                         </ul>
                   </li>
-                  <li><strong>鲜艳化(Colorize)</strong> ：更改颜色（色调），适用于前景（左键单击）和背景（右键单击）颜色</li>
-                  <li><strong>去饱和(Desaturate)</strong>：遗像，完全去除颜色（色调）</li>
-                  <li><strong>转变(Shift)</strong>： 根据所选属性（RGB、HSL、HSV）更改颜色，左键单击添加，右键单击减去。可以通过更改这些选项下的百分比滑块来更改将应用​​多少次
+                  <li><strong>角度(Angle)</strong>
                         <ul>
-                              <li><strong>RGB</strong>：R红、G绿、B蓝</li>
-                              <li><strong>HSL</strong>：H色相、S饱和度、L亮度</li>
-                              <li><strong>HSV</strong>：H色相、S饱和度、明度</li>
+                              <li><strong>静止</strong>：无效果。</li>
+                              <li><strong>旋转(Rotate)</strong>：必须用“线笔刷”，每次点击旋转角度
+                                    <ul>
+                                          <li>数值(Value)：每次旋转的角度数值</li>
+                                    </ul>
+                              </li>
+                              <li><strong>随机范围(Random [Range])</strong>：根据最小值与最大值进行随机
+                                    <ul>
+                                          <li>最小值/最大值(Min/Max)：最小值与最大值</li>
+                                    </ul>
+                              </li>
+                              <li><strong>随机自定义范围(Random [Set])</strong>：根据自定义的数值进行随机
+                                    <ul>
+                                          <li>数值(Value)：格式(1,2,3)，可以无限添加</li>
+                                    </ul>
+                              </li>
                         </ul>
                   </li>
-                  <li><strong>索引模式(Indexed Mode)</strong>：启用后，防止引入新颜色，并且任何修改颜色的选项都将使用调色板中的颜色</li>
+                  <li><strong>颜色(Color)</strong>
+                        <ul>
+                              <li><strong>静止</strong>：无效果。</li>
+                              <li><strong>顺序(Next)</strong>：按照选定的颜色顺序往下变换【每次刷一次颜色都会顺序变一次】</li>
+                              <li><strong>倒序(Previous)</strong>：按照选定的颜色顺序往上变换【每次刷一次颜色都会倒序变一次】</li>
+                              <li><strong>随机自定义范围(Random [Set])</strong>：根据选定的颜色随机变换</li>
+                        </ul>
+                  </li>
             </ul>
             <h3 id="已知问题">已知问题 </h3>
             <blockquote>
                   <ul>
-                        <li><strong>在完全空的单元格上使用 Magic Pencil 中的任何选项将导致第一个笔划被视为普通铅笔；</strong></li>
-                        <li><strong>当使用除 轮廓生成(Outline) 或 鲜艳化(Colorize) 之外的 Magic Pencil
-                                    中的任何选项（实际上使用所选颜色）时，从调色板中选择颜色会干扰其工作并导致奇怪的行为。</strong></li>
+                        <li><strong>暂无</strong></li>
                   </ul>
             </blockquote>
             <h3 id="插件预览">插件预览 </h3>
-            <p><em>↓轮廓生成-跟随笔刷演示↓</em><br>
-                  <img src="https://s2.loli.net/2024/05/12/ZoNnxY2FefWMT7D.gif" alt="轮廓生成-跟随笔刷演示"><br>
-                  <em>↓混合方式-唯一混合演示↓</em><br>
-                  <img src="https://s2.loli.net/2024/05/12/5nsDEtMNPa2f4Lo.gif" alt="混合方式-唯一混合演示"><br>
-                  <em>↓混合方式-唯一混合演示↓</em><br>
-                  <img src="https://s2.loli.net/2024/05/12/Zvol8UfA29h3wBr.gif" alt="混合方式-唯一混合演示"><br>
-                  <em>↓变换-选择区演示↓</em><br>
-                  <img src="https://s2.loli.net/2024/05/12/PdDSFyGYrmResLQ.gif" alt="变换-选择区演示"><br>
-                  <em>↓改变-鲜艳化颜色↓</em><br>
-                  <img src="https://s2.loli.net/2024/05/12/gI9sHhaqiCzAYZU.gif" alt="改变-鲜艳化颜色">
+            <p><em>↓尺寸演示↓</em><br>
+                  <img src="https://img.itch.zone/aW1hZ2UvMjEzNTg5MS8xMjYzMzMzOC5naWY=/original/ZyxzQF.gif"
+                        alt="轮廓生成-跟随笔刷演示"><br>
+                  <em>↓角度演示↓</em><br>
+                  <img src="https://img.itch.zone/aW1hZ2UvMjEzNTg5MS8xMjYzMzM3Mi5naWY=/original/5DlFqg.gif"
+                        alt="混合方式-唯一混合演示"><br>
+                  <em>↓颜色演示↓</em><br>
+                  <img src="https://img.itch.zone/aW1hZ2UvMjEzNTg5MS8xMjYzMzM5NC5naWY=/original/SBiJpl.gif"
+                        alt="混合方式-唯一混合演示">
             </p>
             <h3 id="插件作者">插件作者 </h3>
             <blockquote>
                   <p><strong>作者</strong>：<a href="https://thkaspar.itch.io/">Kacper Woźniak</a><br>
                         <strong>最新版本</strong>：<a
-                              href="https://thkaspar.itch.io/magic-pencil/download/eyJpZCI6MTU1NzE3MiwiZXhwaXJlcyI6MTcxNTUwMjEyMX0%3d.3zyiNefyKmU6H4pxc2gegd8jjkM%3d">v1.0.5</a><br>
-                        <strong>版本发布时间</strong>：2022.06.02
+                              href="https://thkaspar.itch.io/randomize-brush/download/eyJleHBpcmVzIjoxNzE1NTAyMjI2LCJpZCI6MjEzNTg5MX0%3d.lp0CGeoG9CwUfmYjpssQ1CBIGjg%3d">v1.0.0</a><br>
+                        <strong>版本发布时间</strong>：2023.07.30
                   </p>
             </blockquote>
             <h3 id="说明文档撰写人">说明文档撰写人 </h3>
             <blockquote>
                   <p><a href="https://github.com/YueHaxgu">YueHaxgu月</a></p>
-                  <p><a href="https://github.com/66six11">66six11</a></p>
             </blockquote>
 
       </div>
