@@ -48,7 +48,7 @@ Magic Pencil 是 Aseprite 的扩展插件，它为Aseprite添加了更多功能
 
 ### 插件作者
 >**作者**：[Kacper Woźniak](https://thkaspar.itch.io/)\
->**最新版本**：[1.0.5](https://thkaspar.itch.io/magic-pencil/download/eyJpZCI6MTU1NzE3MiwiZXhwaXJlcyI6MTcxNTUwMjEyMX0%3d.3zyiNefyKmU6H4pxc2gegd8jjkM%3d)\
+>**最新版本**：[v1.0.5](https://thkaspar.itch.io/magic-pencil/download/eyJpZCI6MTU1NzE3MiwiZXhwaXJlcyI6MTcxNTUwMjEyMX0%3d.3zyiNefyKmU6H4pxc2gegd8jjkM%3d)\
 >**版本发布时间**：2022.06.02
 
 ### 说明文档撰写人

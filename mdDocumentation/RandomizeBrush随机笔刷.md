@@ -46,7 +46,7 @@ Randomize Brush 是 Aseprite 的扩展插件，它为Aseprite添加了更多功�
 
 ### 插件作者
 >**作者**：[Kacper Woźniak](https://thkaspar.itch.io/)\
->**最新版本**：[1.0.0](https://thkaspar.itch.io/randomize-brush/download/eyJleHBpcmVzIjoxNzE1NTAyMjI2LCJpZCI6MjEzNTg5MX0%3d.lp0CGeoG9CwUfmYjpssQ1CBIGjg%3d)\
+>**最新版本**：[v1.0.0](https://thkaspar.itch.io/randomize-brush/download/eyJleHBpcmVzIjoxNzE1NTAyMjI2LCJpZCI6MjEzNTg5MX0%3d.lp0CGeoG9CwUfmYjpssQ1CBIGjg%3d)\
 >**版本发布时间**：2023.07.30
 
 ### 说明文档撰写人
