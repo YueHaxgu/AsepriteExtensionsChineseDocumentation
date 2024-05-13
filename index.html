@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>插件说明文档</title>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<style>
+    html,
+    body {
+        height: 100%;
+        width: 100%;
+        overflow-y: hidden;
+        overflow-x: hidden;
+    }
+
+    img {
+        max-width: 100%;  /* 图片宽度最大不超过其容器宽度 */
+        height: auto;     /* 高度自动调整以保持图片的原始宽高比 */
+    }
+
+
+    p {
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        unicode-bidi: isolate;
+        word-wrap: break-word; /* 或使用 overflow-wrap: break-word; */
+    }
+    blockquote {
+        display: block;/* 使块级元素可设置宽高 */
+        margin-block-start: 1em;/* 增加顶部外边距 */
+        margin-block-end: 1em;/* 增加底部外边距 */
+        margin-inline-start: 40px;/* 增加左侧外边距 */
+        margin-inline-end: 40px;/* 增加右侧外边距 */
+        unicode-bidi: isolate;/* 防止换行 */
+        margin-left: 20px; /* 减少左边距，使元素向左移动 */
+        padding-left: 20px; /* 增加内边距，保持内容的位置 */
+        border-left: 5px solid #7854bc; /* 设置左边框为5px宽，实线 ,颜色*/
+        background-color: #717171;/* 设置背景色 */
+
+
+    }
+
+
+    .index {
+
+
+        position: fixed;
+        /* 将目录栏设置为固定位置 */
+        top: 50px;
+        /* 在页面顶部距离 50px 的位置 */
+        width: 15%;
+        min-width: 150px;
+        /* 设置目录栏的宽度 */
+        overflow-y: auto;
+        /* 如果内容超出目录栏高度，添加滚动条 */
+        background-color: #5c5c5c; /* 设置背景颜色 */
+
+    }
+
+    .indextitle {
+
+        width: 100%;
+        height: 50px;
+        background-color: #0086b3;
+        color: #fff;
+        margin-bottom: 10px;
+    }
+
+    .indexitem {
+        width: 100%;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        background-color: #2c2a27;
+        padding: 10px;
+        display: block;
+        color: #0086b3;
+        transition: color 0.5s, background-color 0.5s;
+
+    }
+
+    .indexitem:hover {
+        color: #005682;
+        background-color: #55a532;
+    }
+
+    #inspection {
+
+        width: 80%;
+        max-width: calc(95% - 150px);;
+        position: fixed;
+        height: 95%;
+        overflow-y: auto;
+        padding-right: 1%; /* 增加内边距，保持内容的位置 */
+        right: 0;
+        bottom: 0;
+
+    }
+</style>
+
+<body>
+
+<div class="index">
+    <div class="indextitle">
+
+    </div>
+
+    <div class="indexinspection">
+        <button class="indexitem"
+                onclick="MdShow('mdDocumentation/MagicPencil魔法铅笔.md')">
+            魔术铅笔
+        </button>
+        <button class="indexitem"
+                onclick="MdShow('mdDocumentation/RandomizeBrush随机笔刷.md')">
+            随机笔刷
+        </button>
+
+
+    </div>
+
+
+</div>
+
+<div id="inspection"></div>
+
+
+</body>
+<script>
+    function MdShow(path) {
+        fetch(path)
+            .then(response => response.text())
+            .then(text => {
+
+                var inspectionElement = document.getElementById('inspection');
+                inspectionElement.innerHTML = marked.parse(text);// 解析markdown文本并显示
+                inspectionElement.scrollTop= 0; // 页面回到顶部
+
+            })
+            .catch(error => console.error('Error loading the Markdown file:', error));
+
+    }
+
+</script>
+
+</html>
