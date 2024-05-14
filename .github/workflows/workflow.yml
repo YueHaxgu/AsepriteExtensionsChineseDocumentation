@@ -1,0 +1,29 @@
+name: Run Python Script
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10' 
+
+      - name: Run script
+        run: python DirectoryList.py
+        
+      - name: Commit and push if changes
+        run: |
+          git config --global user.email "123@qq.com"
+          git config --global user.name "更新txt"
+          git add mds.txt
+          git commit -m "Add mds.txt file" || echo "No changes to commit"
+          git push
