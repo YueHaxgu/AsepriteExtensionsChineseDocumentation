@@ -22,8 +22,8 @@ jobs:
         
       - name: Commit and push if changes
         run: |
-          git config --global user.email "123@qq.com"
-          git config --global user.name "更新txt"
+          git config --global user.email "yuehaxgu@qq.com"
+          git config --global user.name "YueHaxgu"
           git add mds.txt
           git commit -m "Add mds.txt file" || echo "No changes to commit"
           git push
