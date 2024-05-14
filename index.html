@@ -4,6 +4,7 @@
 <head>
     <title>插件说明文档</title>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <style>
@@ -16,8 +17,10 @@
     }
 
     img {
-        max-width: 100%;  /* 图片宽度最大不超过其容器宽度 */
-        height: auto;     /* 高度自动调整以保持图片的原始宽高比 */
+        max-width: 100%;
+        /* 图片宽度最大不超过其容器宽度 */
+        height: auto;
+        /* 高度自动调整以保持图片的原始宽高比 */
     }
 
 
@@ -28,19 +31,31 @@
         margin-inline-start: 0px;
         margin-inline-end: 0px;
         unicode-bidi: isolate;
-        word-wrap: break-word; /* 或使用 overflow-wrap: break-word; */
+        word-wrap: break-word;
+        /* 或使用 overflow-wrap: break-word; */
     }
+
     blockquote {
-        display: block;/* 使块级元素可设置宽高 */
-        margin-block-start: 1em;/* 增加顶部外边距 */
-        margin-block-end: 1em;/* 增加底部外边距 */
-        margin-inline-start: 40px;/* 增加左侧外边距 */
-        margin-inline-end: 40px;/* 增加右侧外边距 */
-        unicode-bidi: isolate;/* 防止换行 */
-        margin-left: 20px; /* 减少左边距，使元素向左移动 */
-        padding-left: 20px; /* 增加内边距，保持内容的位置 */
-        border-left: 5px solid #7854bc; /* 设置左边框为5px宽，实线 ,颜色*/
-        background-color: #717171;/* 设置背景色 */
+        display: block;
+        /* 使块级元素可设置宽高 */
+        margin-block-start: 1em;
+        /* 增加顶部外边距 */
+        margin-block-end: 1em;
+        /* 增加底部外边距 */
+        margin-inline-start: 40px;
+        /* 增加左侧外边距 */
+        margin-inline-end: 40px;
+        /* 增加右侧外边距 */
+        unicode-bidi: isolate;
+        /* 防止换行 */
+        margin-left: 20px;
+        /* 减少左边距，使元素向左移动 */
+        padding-left: 20px;
+        /* 增加内边距，保持内容的位置 */
+        border-left: 5px solid #7854bc;
+        /* 设置左边框为5px宽，实线 ,颜色*/
+        background-color: #717171;
+        /* 设置背景色 */
 
 
     }
@@ -58,7 +73,8 @@
         /* 设置目录栏的宽度 */
         overflow-y: auto;
         /* 如果内容超出目录栏高度，添加滚动条 */
-        background-color: #5c5c5c; /* 设置背景颜色 */
+        background-color: #5c5c5c;
+        /* 设置背景颜色 */
 
     }
 
@@ -91,11 +107,13 @@
     #inspection {
 
         width: 80%;
-        max-width: calc(95% - 150px);;
+        max-width: calc(95% - 150px);
+        ;
         position: fixed;
         height: 95%;
         overflow-y: auto;
-        padding-right: 1%; /* 增加内边距，保持内容的位置 */
+        padding-right: 1%;
+        /* 增加内边距，保持内容的位置 */
         right: 0;
         bottom: 0;
 
@@ -104,32 +122,21 @@
 
 <body>
 
-<div class="index">
-    <div class="indextitle">
-
+    <div class="index">
+        <!-- 目录栏 -->
+        <div class="indextitle">
+        <!-- 目录栏标题 -->
+        目录
+        </div>
+        <div class="indexinspection"></div>
     </div>
 
-    <div class="indexinspection">
-        <button class="indexitem"
-                onclick="MdShow('mdDocumentation/MagicPencil魔法铅笔.md')">
-            魔术铅笔
-        </button>
-        <button class="indexitem"
-                onclick="MdShow('mdDocumentation/RandomizeBrush随机笔刷.md')">
-            随机笔刷
-        </button>
-
-
-    </div>
-
-
-</div>
-
-<div id="inspection"></div>
+    <div id="inspection"></div>
 
 
 </body>
 <script>
+    // 显示markdown文件内容
     function MdShow(path) {
         fetch(path)
             .then(response => response.text())
@@ -137,25 +144,41 @@
 
                 var inspectionElement = document.getElementById('inspection');
                 inspectionElement.innerHTML = marked.parse(text);// 解析markdown文本并显示
-                inspectionElement.scrollTop= 0; // 页面回到顶部
+                inspectionElement.scrollTop = 0; // 页面回到顶部
 
             })
-            .catch(error => console.error('Error loading the Markdown file:', error));
+            .catch(error => console.error('Error loading the Markdown file:', error));// 捕获错误并打印到控制台
 
     }
-    var fs = require("fs");
 
-    // 异步打开文件
-    console.log("准备打开文件！");
-    fs.open('mdDocumentation', 'r+', function(err, fd) {
-        if (err) {
-            return console.error(err);
-        }
-        console.log("文件打开成功！");
-    });
+    // 遍历文件列表，创建目录栏
+    fetch('mds.txt')
+        .then(response => response.text())
+        .then(text => {
+            let lines = text.split('\n');
+
+            console.log(lines[0]);
+            for (let i = 0; i < lines.length-1; i++) {
+                // 获取文件名
+                var name = lines[i].split('.')[0];
+                //创建一个新的子元素
+                var newElement = document.createElement("button");
+                newElement.className = "indexitem";
+                newElement.textContent = name;
+                newElement.onclick = function () {
+                    MdShow('mdDocumentation/' + lines[i]);
+                };
 
 
+                // 获取父元素
+                var parentElement = document.getElementsByClassName("indexinspection")[0];
 
+                // 将新元素添加为父元素的子元素
+                parentElement.appendChild(newElement);
+            }
+
+        })
+        .catch(error => console.error('Error loading the Markdown file:', error));// 捕获错误并打印到控制台
 </script>
 
 </html>
