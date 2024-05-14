@@ -2,10 +2,9 @@ import os
 
 
 path = 'mdDocumentation'
-# 获取指定目录中的文件和目录列表
-entries = os.listdir(path)
+# 获取指定目录中的文件和目录列表，只包括以 .md 结尾的文件
+entries = [entry for entry in os.listdir(path) if entry.endswith('.md')]
 print(entries)
-
 # 指定文件路径
 file_path = './mds.txt'
 
