@@ -10,18 +10,27 @@ for entry in entries:
     with open(path + '/' + entry, 'r',encoding='utf-8') as file:
         file_content = file.read()
         print(file_content)
-        author_match = re.search(r'\*\*作者\*\*：\[(.*?)\]', file_content)# 正则匹配,提取作者信息
+        
         author_name = ""
-        if author_match:
-            author_name = author_match.group(1)
-            print(author_name)
+        author_href =""
+        pattern = r'\*\*作者\*\*：\[(.*?)\]\((.*?)\)'
+
+        # 使用正则表达式进行匹配
+        matches = re.findall(pattern, file_content)
+        if matches:
+            for match in matches:
+                print("作者：", match[0])
+                print("链接：", match[1])
+                author_name = match[0]
+                author_href = match[1]
+  
         else:
             
             print("未找到作者信息")
             # 写入作者信息和文件名到文件
         with open(file_path, 'w',encoding='utf-8') as file:
             for entry in entries:
-                file.write( entry + " #" +author_name  +'\n')  # 添加换行符确保每个条目在新的一行
+                file.write( entry + " #" +author_name  + " @" + author_href + '\n' )  # 添加换行符确保每个条目在新的一行
 # 指定文件路径
 
 
