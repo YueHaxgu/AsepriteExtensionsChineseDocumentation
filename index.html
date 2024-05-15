@@ -14,12 +14,13 @@
         width: 100%;
         overflow-y: hidden;
         overflow-x: hidden;
+        background-color: #242432;
     }
 
     img {
-        max-width: 100%;
-        /* 图片宽度最大不超过其容器宽度 */
-        height: auto;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
         /* 高度自动调整以保持图片的原始宽高比 */
     }
 
@@ -33,6 +34,7 @@
         unicode-bidi: isolate;
         word-wrap: break-word;
         /* 或使用 overflow-wrap: break-word; */
+
     }
 
     blockquote {
@@ -54,11 +56,65 @@
         /* 增加内边距，保持内容的位置 */
         border-left: 5px solid #7854bc;
         /* 设置左边框为5px宽，实线 ,颜色*/
-        background-color: #717171;
+        background-color: #242432;
         /* 设置背景色 */
 
 
     }
+
+
+    .author {
+        display: block;
+        /* 使块级元素可设置宽高 */
+        margin-block-start: 0;
+        /* 增加顶部外边距 */
+        margin-block-end: 0;
+        /* 增加底部外边距 */
+        margin-inline-start: 0;
+        /* 增加左侧外边距 */
+        margin-inline-end: 0;
+        /* 增加右侧外边距 */
+        unicode-bidi: isolate;
+        /* 防止换行 */
+        margin-left: 0;
+        /* 减少左边距，使元素向左移动 */
+        padding-left: 5px;
+        /* 增加内边距，保持内容的位置 */
+        margin-bottom: 15%;
+        box-sizing: border-box;/* 防止子元素影响边框 */
+
+        border-left: 2px solid #81818b;
+        /* 设置左边框为5px宽，实线 ,颜色*/
+        background-color: #43435600;
+        /* 设置背景色 */
+        transition: border-left 0.5s ease;
+
+    }
+
+    /* 作者作品旁的直线的选择状态*/
+    .authorSelected {
+        border-left: 3px solid #ffffff;
+
+    }
+
+    .authorhref {
+        text-align: left;
+        /* 左对齐 */
+        color: #81818b;
+        /* 字体颜色 */
+        font-size: xx-small;
+        /* 字体大小 */
+        text-decoration: none;
+        /* 去掉下划线 */
+        transition: color 0.5s;
+        /* 增加过渡效果 */
+
+    }
+
+    .authorhref:hover {
+        color: #ffffff;
+    }
+
 
 
     .index {
@@ -66,57 +122,109 @@
 
         position: fixed;
         /* 将目录栏设置为固定位置 */
-        top: 50px;
-        /* 在页面顶部距离 50px 的位置 */
+        top: 0;
+        left: 0;
         width: 15%;
-        min-width: 150px;
+        height: 100%;
+        /* 设置高度和宽度 */
+
         /* 设置目录栏的宽度 */
         overflow-y: auto;
         /* 如果内容超出目录栏高度，添加滚动条 */
-        background-color: #5c5c5c;
+        background-color: #434356;
         /* 设置背景颜色 */
 
+    }
+
+    .indextcontent {
+        padding: 10%;
+        /* 增加内边距 */
     }
 
     .indextitle {
 
         width: 100%;
-        height: 50px;
-        background-color: #0086b3;
+        /* 宽度填充满 */
+        font-weight: bold;
+        font-size: xx-large;
         color: #fff;
-        margin-bottom: 10px;
+        margin-bottom: 10%;
     }
 
-    .indexitem {
+    .works {
+        background-color: #ffffff00;
+        border: 1px solid #ffffff00;
         width: 100%;
-        margin-bottom: 10px;
-        border-radius: 10px;
-        background-color: #2c2a27;
-        padding: 10px;
-        display: block;
-        color: #0086b3;
-        transition: color 0.5s, background-color 0.5s;
+        margin-bottom: 0;
+        /* 增加底部外边距 */
+        border-radius: 0;
+        /* 圆角 */
+        
+        padding-top: 5%;
+        padding-bottom: 5%;
+        /* 增加内边距 */
+
+
+
+        text-align: left;
+
+        color: #81818b;
+
+
+        transition: border 0.5s, color 0.5s;
+        /* 增加过渡效果 */
 
     }
 
-    .indexitem:hover {
-        color: #005682;
-        background-color: #55a532;
+    .works:hover {
+        color: #e9e9e9;
+
+
+    }
+
+    /* 按钮的选择状态*/
+    .selected {
+        font-weight: bold;
+        color: #ffffff;
+    }
+
+    .contant {
+        height: 100%;
+        width: 85%;
+        right: 0;
+        position: fixed;
+        top: 0;
+        display: flex;
+        /* 添加Flexbox布局 */
+        justify-content: center;
+        /* 水平居中 */
+        align-items: flex-end;
+        /* 垂直靠下 */
     }
 
     #inspection {
 
-        width: 80%;
-        max-width: calc(95% - 150px);
-        ;
-        position: fixed;
         height: 95%;
+        width: 70%;
         overflow-y: auto;
-        padding-right: 1%;
-        /* 增加内边距，保持内容的位置 */
-        right: 0;
-        bottom: 0;
+        color: #fff;
+    }
 
+    /* 隐藏滑动条轨道 */
+    ::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+    }
+
+    /* 隐藏滑动条滑块以外的部分 */
+    ::-webkit-scrollbar-thumb {
+        background-color: #24243200;
+    }
+
+    /* 隐藏滑动条轨道 */
+    ::-webkit-scrollbar-track {
+        background-color: #24243200;
+        
     }
 </style>
 
@@ -124,14 +232,19 @@
 
     <div class="index">
         <!-- 目录栏 -->
-        <div class="indextitle">
-        <!-- 目录栏标题 -->
-        目录
+        <div class="indextcontent">
+            <div class="indextitle">
+                <!-- 目录栏标题 -->
+                目录
+            </div>
+            <div class="indexinspection"></div>
         </div>
-        <div class="indexinspection"></div>
+
+    </div>
+    <div class="contant">
+        <div id="inspection"></div>
     </div>
 
-    <div id="inspection"></div>
 
 
 </body>
@@ -144,41 +257,137 @@
 
                 var inspectionElement = document.getElementById('inspection');
                 inspectionElement.innerHTML = marked.parse(text);// 解析markdown文本并显示
-                inspectionElement.scrollTop = 0; // 页面回到顶部
 
             })
             .catch(error => console.error('Error loading the Markdown file:', error));// 捕获错误并打印到控制台
 
     }
-
+    var authorDictionary = {}
     // 遍历文件列表，创建目录栏
     fetch('mds.txt')
         .then(response => response.text())
         .then(text => {
-            let lines = text.split('\n');
+            let lines = text.split('\n');// 按行分割文本
+            // 定义一个字典，用于存储作者和文件名，结构为{作者：文件名数组}
 
-            console.log(lines[0]);
-            for (let i = 0; i < lines.length-1; i++) {
-                // 获取文件名
-                var name = lines[i].split('.')[0];
-                //创建一个新的子元素
-                var newElement = document.createElement("button");
-                newElement.className = "indexitem";
-                newElement.textContent = name;
-                newElement.onclick = function () {
-                    MdShow('mdDocumentation/' + lines[i]);
+
+            // 遍历文本行列表
+            for (let i = 0; i < lines.length; i++) {
+                // 跳过空行
+                if (lines[i] != '') {
+                    var name = lines[i].split('.')[0];//获取文件名
+                    var author = lines[i].split('#')[1];//获取作者
+                    if (author in authorDictionary) {
+                        // 如果作者已经在字典中，将文件名添加到对应的数组中
+                        authorDictionary[author].push(name);
+                    } else {
+                        // 如果作者不在字典中，创建一个新的数组来存储文件名，并将作者作为键
+                        authorDictionary[author] = [name];
+                    }
                 };
+            }
+            for (let author in authorDictionary) {
+                // 创建一个新的元素，作为目录栏的子元素
+                var authorhref = author.split('@')[1];//匹配链接) 
+                var newElement = document.createElement("blockquote");
+                newElement.className = "author";
 
-
+                newElement.innerHTML = `<a class="authorhref" href=${authorhref}> ${author.split('@')[0]}</a>`;//设置作者名
                 // 获取父元素
-                var parentElement = document.getElementsByClassName("indexinspection")[0];
 
+                var parentElement = document.getElementsByClassName("indexinspection")[0];
                 // 将新元素添加为父元素的子元素
                 parentElement.appendChild(newElement);
+                parentElement = newElement;
+                // 创建n个新的子元素，作为目录栏的子元素
+                for (let j = 0; j < authorDictionary[author].length; j++) {
+                    var newElement = document.createElement("button");
+                    newElement.className = "works";
+                    newElement.textContent = authorDictionary[author][j].split('.')[0];
+                    console.log(authorDictionary[author][j] + '.md');//匹配文件名，并设置文本内容
+                    newElement.onclick = function () {
+                        MdShow('mdDocumentation/' + authorDictionary[author][j] + '.md');//匹配文件名，并设置路径，调用显示md函数
+                    }
+                    // 将新元素添加为父元素的子元素
+                    parentElement.appendChild(newElement);
+                }
+            };
+
+
+            // 获取按钮元素
+            const myButtons = document.getElementsByClassName('works');
+            // 获取子元素的父元素
+            var previousButton = null;//记录上一个被点击的按钮
+
+
+            var previousParent = null;//记录上一个按钮的父元素
+
+            // 点击后切换按钮样式
+            // 添加点击事件监听器
+            for (let i = 0; i < myButtons.length; i++) {
+
+
+                myButtons[i].addEventListener('click', function () {
+                    if (previousButton != myButtons[i]) {
+
+                        var parentElement = this.parentNode;
+                        // 切换按钮的选择状态
+                        this.classList.toggle('selected'); // 使用this来引用当前被点击的按钮
+                        if (previousButton != null) {
+                            previousButton.classList.remove('selected');// 取消上一个按钮的选择状态
+                            var inspectionElement = document.getElementById('inspection');
+                            inspectionElement.scrollTop = 0; // 页面回到顶部 
+                        }
+
+                        previousButton = this; // 记录上一个被点击的按钮
+
+                        // 切换父元素的选择状态
+
+
+                        if (parentElement != previousParent) {
+                            // 切换按钮的选择状态
+                            parentElement.classList.toggle('authorSelected'); // 使用this来引用当前被点击的按钮
+                            if (previousParent != null) {
+                                previousParent.classList.remove('authorSelected'); // 取消上一个按钮的选择状态
+                            }
+
+                        }
+                        previousParent = this.parentNode; // 记录上一个被点击的按钮
+                    }
+                }
+                );
             }
 
         })
         .catch(error => console.error('Error loading the Markdown file:', error));// 捕获错误并打印到控制台
+
+
+
 </script>
+//
+<script>
+    //     // 点击后切换按钮样式
+    //     // 获取按钮元素
+    //     const myButtons = document.getElementsByClassName('works');
+    //     // 获取子元素的父元素
+
+    //     // 添加点击事件监听器
+    //     var previousButton = null;
+    //     for (let i = 0; i < myButtons.length; i++) {
+    //         const parentElement = myButtons[i].parentNode;
+    //         if (previousButton != myButtons[i]) {
+    //             myButtons[i].addEventListener('click', function () {
+    //                 // 切换按钮的选择状态
+    //                 this.classList.toggle('selected'); // 使用this来引用当前被点击的按钮
+    //                 if (previousButton != null) {
+    //                     previousButton.classList.remove('selected'); // 取消上一个按钮的选择状态
+    //                 }
+    //                 previousButton = this; // 记录上一个被点击的按钮
+
+    //             });
+    //         }
+
+    //     }
+    // </script>
 
 </html>
