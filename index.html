@@ -125,8 +125,8 @@
     <div class="index">
         <!-- 目录栏 -->
         <div class="indextitle">
-        <!-- 目录栏标题 -->
-        目录
+            <!-- 目录栏标题 -->
+            目录
         </div>
         <div class="indexinspection"></div>
     </div>
@@ -158,15 +158,22 @@
             let lines = text.split('\n');
 
             console.log(lines[0]);
-            for (let i = 0; i < lines.length-1; i++) {
-                // 获取文件名
-                var name = lines[i].split('.')[0];
-                //创建一个新的子元素
-                var newElement = document.createElement("button");
-                newElement.className = "indexitem";
-                newElement.textContent = name;
-                newElement.onclick = function () {
-                    MdShow('mdDocumentation/' + lines[i]);
+            for (let i = 0; i < lines.length; i++) {
+                // 跳过空行
+                if (lines[i] != '') {
+                    var name = lines[i].split('.')[0];//获取文件名
+                    var author = lines[i].split('.')[1].split('#')[1];//获取作者
+
+                    
+                    //创建一个新的子元素
+                    var newElement = document.createElement("button");
+                    newElement.className = "indexitem";
+                    newElement.textContent = name;
+                    newElement.onclick = function () {
+                        MdShow('mdDocumentation/' + lines[i].split(' ')[0]);//匹配文件名，并设置路径，调用显示md函数
+                    }
+                    // 获取文件名
+
                 };
 
 
