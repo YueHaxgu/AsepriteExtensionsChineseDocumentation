@@ -14,7 +14,7 @@
         width: 100%;
         overflow-y: hidden;
         overflow-x: hidden;
-        background-color: #242432;
+        background-color: #141520;
     }
 
     img {
@@ -24,6 +24,11 @@
         /* 高度自动调整以保持图片的原始宽高比 */
     }
 
+    a:-webkit-any-link {
+    color: white;
+    cursor: pointer;
+    text-decoration: underline;
+    }
 
     p {
         display: block;
@@ -78,7 +83,7 @@
         /* 防止换行 */
         margin-left: 0;
         /* 减少左边距，使元素向左移动 */
-        padding-left: 5px;
+        padding-left: 16px;
         /* 增加内边距，保持内容的位置 */
         margin-bottom: 15%;
         box-sizing: border-box;/* 防止子元素影响边框 */
@@ -93,7 +98,7 @@
 
     /* 作者作品旁的直线的选择状态*/
     .authorSelected {
-        border-left: 3px solid #ffffff;
+        border-left: 2px solid #ffffff;
 
     }
 
@@ -131,7 +136,7 @@
         /* 设置目录栏的宽度 */
         overflow-y: auto;
         /* 如果内容超出目录栏高度，添加滚动条 */
-        background-color: #434356;
+        background-color: #232538;
         /* 设置背景颜色 */
 
     }
