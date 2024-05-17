@@ -405,10 +405,12 @@
             return 0;
         }
     }
+    //打印每一个选项对应的ulr
     function printUlr() {
+        const baseUrl = window.location.origin + window.location.pathname;
         var works = document.getElementsByClassName('works');
         for (let i = 0; i < works.length; i++) {
-            console.log(works[i].textContent + ':' + window.location.origin + '/index.html#selection=' + i);
+            console.log(works[i].textContent + ':' + baseUrl + '#selection=' + i);
         }
 
     }
@@ -423,7 +425,7 @@
         var i = getParams();//获取URL参数
         works[i].click();//选择参数对应的按钮
     })();
-    //打印每一个选项对应的ulr
+    
 
 
 
