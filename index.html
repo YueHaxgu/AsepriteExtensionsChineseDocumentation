@@ -256,6 +256,10 @@
 
 </body>
 <script>
+
+
+
+
     // 显示markdown文件内容
     function MdShow(path) {
         fetch(path)
@@ -269,8 +273,9 @@
             .catch(error => console.error('Error loading the Markdown file:', error));// 捕获错误并打印到控制台
 
     }
-    var authorDictionary = {}
+
     async function getAuthorWorks() {
+        var authorDictionary = {}
         return new Promise((resolve, reject) => {
             fetch('mds.txt')
                 .then(response => response.text())
@@ -368,18 +373,57 @@
                     resolve();// 异步函数结束，通知调用者
                 })
                 .catch(error => console.error('Error loading the Markdown file:', error));// 捕获错误并打印到控制台
-            })
+        })
+    }
+    // 获取URL参数
+    function getParams() {
+        const currentUrl = window.location.href;
+        var startIndex = currentUrl.indexOf('#');
+        if (startIndex === -1) {
+            console.log('未找到查询参数');
+            return 0;
         }
-        // 调用异步函数
+        var paramsStr = currentUrl.substr(startIndex + 1);
+        var params = new URLSearchParams(paramsStr);
+        console.log(params);
+        try {
+            // 检查是否存在自定义设置
+            if (params.has('selection')) {
+                var selected = params.get('selection');
+                console.log(selected);
+                // 在这里执行自定义初始化操作
+                console.log('使用自定义设置初始化网站');
+                return selected;
+            } else {
+                // 在这里执行默认初始化操作
+                console.log('使用默认设置初始化网站');
+                return 0;
+            }
+        }
+        catch (error) {
+            console.log(error);
+            return 0;
+        }
+    }
+    function printUlr() {
+        var works = document.getElementsByClassName('works');
+        for (let i = 0; i < works.length; i++) {
+            console.log(works[i].textContent + ':' + window.location.origin + '/index.html#selection=' + i);
+        }
+
+    }
+    // 调用异步函数
     (async () => {
 
         await getAuthorWorks();
-        
-            var works = document.getElementsByClassName('works');
-            console.log(works.length);
-            works[0].click();// 点击第一个按钮
-    })();
 
+        var works = document.getElementsByClassName('works');
+        console.log(works.length);
+        printUlr();//打印每一个选项对应的ulr
+        var i = getParams();//获取URL参数
+        works[i].click();//选择参数对应的按钮
+    })();
+    //打印每一个选项对应的ulr
 
 
 
