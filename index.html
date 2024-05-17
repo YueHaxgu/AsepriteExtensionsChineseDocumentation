@@ -24,10 +24,11 @@
         /* 高度自动调整以保持图片的原始宽高比 */
     }
 
-    a:-webkit-any-link {
-    color: white;
-    cursor: pointer;
-    text-decoration: underline;
+    /* 只指定md中的链接 */
+    p a:-webkit-any-link {
+        color: white;
+        cursor: pointer;
+        text-decoration: underline;
     }
 
     p {
@@ -86,7 +87,8 @@
         padding-left: 16px;
         /* 增加内边距，保持内容的位置 */
         margin-bottom: 15%;
-        box-sizing: border-box;/* 防止子元素影响边框 */
+        box-sizing: border-box;
+        /* 防止子元素影响边框 */
 
         border-left: 2px solid #81818b;
         /* 设置左边框为5px宽，实线 ,颜色*/
@@ -164,7 +166,7 @@
         /* 增加底部外边距 */
         border-radius: 0;
         /* 圆角 */
-        
+
         padding-top: 5%;
         padding-bottom: 5%;
         /* 增加内边距 */
@@ -229,7 +231,7 @@
     /* 隐藏滑动条轨道 */
     ::-webkit-scrollbar-track {
         background-color: #24243200;
-        
+
     }
 </style>
 
@@ -268,131 +270,123 @@
 
     }
     var authorDictionary = {}
-    // 遍历文件列表，创建目录栏
-    fetch('mds.txt')
-        .then(response => response.text())
-        .then(text => {
-            let lines = text.split('\n');// 按行分割文本
-            // 定义一个字典，用于存储作者和文件名，结构为{作者：文件名数组}
+    async function getAuthorWorks() {
+        return new Promise((resolve, reject) => {
+            fetch('mds.txt')
+                .then(response => response.text())
+                .then(text => {
+                    let lines = text.split('\n');// 按行分割文本
+                    // 定义一个字典，用于存储作者和文件名，结构为{作者：文件名数组}
 
 
-            // 遍历文本行列表
-            for (let i = 0; i < lines.length; i++) {
-                // 跳过空行
-                if (lines[i] != '') {
-                    var name = lines[i].split('.')[0];//获取文件名
-                    var author = lines[i].split('#')[1];//获取作者
-                    if (author in authorDictionary) {
-                        // 如果作者已经在字典中，将文件名添加到对应的数组中
-                        authorDictionary[author].push(name);
-                    } else {
-                        // 如果作者不在字典中，创建一个新的数组来存储文件名，并将作者作为键
-                        authorDictionary[author] = [name];
-                    }
-                };
-            }
-            for (let author in authorDictionary) {
-                // 创建一个新的元素，作为目录栏的子元素
-                var authorhref = author.split('@')[1];//匹配链接) 
-                var newElement = document.createElement("blockquote");
-                newElement.className = "author";
-
-                newElement.innerHTML = `<a class="authorhref" href=${authorhref}> ${author.split('@')[0]}</a>`;//设置作者名
-                // 获取父元素
-
-                var parentElement = document.getElementsByClassName("indexinspection")[0];
-                // 将新元素添加为父元素的子元素
-                parentElement.appendChild(newElement);
-                parentElement = newElement;
-                // 创建n个新的子元素，作为目录栏的子元素
-                for (let j = 0; j < authorDictionary[author].length; j++) {
-                    var newElement = document.createElement("button");
-                    newElement.className = "works";
-                    newElement.textContent = authorDictionary[author][j].split('.')[0];
-                    console.log(authorDictionary[author][j] + '.md');//匹配文件名，并设置文本内容
-                    newElement.onclick = function () {
-                        MdShow('mdDocumentation/' + authorDictionary[author][j] + '.md');//匹配文件名，并设置路径，调用显示md函数
-                    }
-                    // 将新元素添加为父元素的子元素
-                    parentElement.appendChild(newElement);
-                }
-            };
-
-
-            // 获取按钮元素
-            const myButtons = document.getElementsByClassName('works');
-            // 获取子元素的父元素
-            var previousButton = null;//记录上一个被点击的按钮
-
-
-            var previousParent = null;//记录上一个按钮的父元素
-
-            // 点击后切换按钮样式
-            // 添加点击事件监听器
-            for (let i = 0; i < myButtons.length; i++) {
-
-
-                myButtons[i].addEventListener('click', function () {
-                    if (previousButton != myButtons[i]) {
-
-                        var parentElement = this.parentNode;
-                        // 切换按钮的选择状态
-                        this.classList.toggle('selected'); // 使用this来引用当前被点击的按钮
-                        if (previousButton != null) {
-                            previousButton.classList.remove('selected');// 取消上一个按钮的选择状态
-                            var inspectionElement = document.getElementById('inspection');
-                            inspectionElement.scrollTop = 0; // 页面回到顶部 
-                        }
-
-                        previousButton = this; // 记录上一个被点击的按钮
-
-                        // 切换父元素的选择状态
-
-
-                        if (parentElement != previousParent) {
-                            // 切换按钮的选择状态
-                            parentElement.classList.toggle('authorSelected'); // 使用this来引用当前被点击的按钮
-                            if (previousParent != null) {
-                                previousParent.classList.remove('authorSelected'); // 取消上一个按钮的选择状态
+                    // 遍历文本行列表
+                    for (let i = 0; i < lines.length; i++) {
+                        // 跳过空行
+                        if (lines[i] != '') {
+                            var name = lines[i].split('.')[0];//获取文件名
+                            var author = lines[i].split('#')[1];//获取作者
+                            if (author in authorDictionary) {
+                                // 如果作者已经在字典中，将文件名添加到对应的数组中
+                                authorDictionary[author].push(name);
+                            } else {
+                                // 如果作者不在字典中，创建一个新的数组来存储文件名，并将作者作为键
+                                authorDictionary[author] = [name];
                             }
-
-                        }
-                        previousParent = this.parentNode; // 记录上一个被点击的按钮
+                        };
                     }
-                }
-                );
-            }
+                    for (let author in authorDictionary) {
+                        // 创建一个新的元素，作为目录栏的子元素
+                        var authorhref = author.split('@')[1];//匹配链接) 
+                        var newElement = document.createElement("blockquote");
+                        newElement.className = "author";
 
-        })
-        .catch(error => console.error('Error loading the Markdown file:', error));// 捕获错误并打印到控制台
+                        newElement.innerHTML = `<a class="authorhref" href=${authorhref}> ${author.split('@')[0]}</a>`;//设置作者名
+                        // 获取父元素
+
+                        var parentElement = document.getElementsByClassName("indexinspection")[0];
+                        // 将新元素添加为父元素的子元素
+                        parentElement.appendChild(newElement);
+                        parentElement = newElement;
+                        // 创建n个新的子元素，作为目录栏的子元素
+                        for (let j = 0; j < authorDictionary[author].length; j++) {
+                            var newElement = document.createElement("button");
+                            newElement.className = "works";
+                            newElement.textContent = authorDictionary[author][j].split('.')[0];
+                            console.log(authorDictionary[author][j] + '.md');//匹配文件名，并设置文本内容
+                            newElement.onclick = function () {
+                                MdShow('mdDocumentation/' + authorDictionary[author][j] + '.md');//匹配文件名，并设置路径，调用显示md函数
+                            }
+                            // 将新元素添加为父元素的子元素
+                            parentElement.appendChild(newElement);
+                        }
+                    };
+
+
+                    // 获取按钮元素
+                    const myButtons = document.getElementsByClassName('works');
+                    // 获取子元素的父元素
+                    var previousButton = null;//记录上一个被点击的按钮
+
+
+                    var previousParent = null;//记录上一个按钮的父元素
+
+                    // 点击后切换按钮样式
+                    // 添加点击事件监听器
+                    for (let i = 0; i < myButtons.length; i++) {
+
+
+                        myButtons[i].addEventListener('click', function () {
+                            if (previousButton != myButtons[i]) {
+
+                                var parentElement = this.parentNode;
+                                // 切换按钮的选择状态
+                                this.classList.toggle('selected'); // 使用this来引用当前被点击的按钮
+                                if (previousButton != null) {
+                                    previousButton.classList.remove('selected');// 取消上一个按钮的选择状态
+                                    var inspectionElement = document.getElementById('inspection');
+                                    inspectionElement.scrollTop = 0; // 页面回到顶部 
+                                }
+
+                                previousButton = this; // 记录上一个被点击的按钮
+
+                                // 切换父元素的选择状态
+
+
+                                if (parentElement != previousParent) {
+                                    // 切换按钮的选择状态
+                                    parentElement.classList.toggle('authorSelected'); // 使用this来引用当前被点击的按钮
+                                    if (previousParent != null) {
+                                        previousParent.classList.remove('authorSelected'); // 取消上一个按钮的选择状态
+                                    }
+
+                                }
+                                previousParent = this.parentNode; // 记录上一个被点击的按钮
+                            }
+                        }
+                        );
+                    }
+                    resolve();// 异步函数结束，通知调用者
+                })
+                .catch(error => console.error('Error loading the Markdown file:', error));// 捕获错误并打印到控制台
+            })
+        }
+        // 调用异步函数
+    (async () => {
+
+        await getAuthorWorks();
+        
+            var works = document.getElementsByClassName('works');
+            console.log(works.length);
+            works[0].click();// 点击第一个按钮
+    })();
+
+
+
+
+
 
 
 
 </script>
-//
-<script>
-    //     // 点击后切换按钮样式
-    //     // 获取按钮元素
-    //     const myButtons = document.getElementsByClassName('works');
-    //     // 获取子元素的父元素
-
-    //     // 添加点击事件监听器
-    //     var previousButton = null;
-    //     for (let i = 0; i < myButtons.length; i++) {
-    //         const parentElement = myButtons[i].parentNode;
-    //         if (previousButton != myButtons[i]) {
-    //             myButtons[i].addEventListener('click', function () {
-    //                 // 切换按钮的选择状态
-    //                 this.classList.toggle('selected'); // 使用this来引用当前被点击的按钮
-    //                 if (previousButton != null) {
-    //                     previousButton.classList.remove('selected'); // 取消上一个按钮的选择状态
-    //                 }
-    //                 previousButton = this; // 记录上一个被点击的按钮
-
-    //             });
-    //         }
-
-    //     }
-    // </script>
 
 </html>
