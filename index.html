@@ -410,9 +410,35 @@
         const baseUrl = window.location.origin + window.location.pathname;
         var works = document.getElementsByClassName('works');
         for (let i = 0; i < works.length; i++) {
-            console.log(works[i].textContent + ':' + baseUrl + '#selection=' + i);
+            console.log(works[i].textContent + ':' + baseUrl + '#selection=' + works[i].textContent);
         }
 
+    }
+
+
+    //根据参数选择按钮
+
+    function selectButton(i) {
+        if (i != 0) {
+            var works = document.getElementsByClassName('works');
+            console.log(works.length);
+            for (let j = 0; j < works.length; j++) {
+                if (works[j].textContent == i) {
+                    works[j].click();
+                    break;
+                }
+            }
+        } 
+        else 
+        {
+
+
+            var works = document.getElementsByClassName('works');
+            works[0].click();
+
+
+
+        }
     }
     // 调用异步函数
     (async () => {
@@ -423,9 +449,9 @@
         console.log(works.length);
         printUlr();//打印每一个选项对应的ulr
         var i = getParams();//获取URL参数
-        works[i].click();//选择参数对应的按钮
+        selectButton(i);//根据参数选择按钮
     })();
-    
+
 
 
 
